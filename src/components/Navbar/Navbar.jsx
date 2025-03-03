@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 
-const Navbar = () => {
+const Navbar = ({ onSearch }) => {
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    onSearch(searchValue);
+  };
+
   return (
     <>
       <nav className={styles.navbar}>
@@ -30,11 +37,15 @@ const Navbar = () => {
         </ul>
 
         <div className={styles.navSearch}>
-          <input
-            type="search"
-            placeholder="Search location..."
-            className={styles.searchInput}
-          />
+          <form onSubmit={handleSubmit}>
+            <input
+              type="search"
+              placeholder="Search location..."
+              className={styles.searchInput}
+              value={searchValue}
+              onChange={e => setSearchValue(e.target.value)}
+            />
+          </form>
         </div>
       </nav>
     </>

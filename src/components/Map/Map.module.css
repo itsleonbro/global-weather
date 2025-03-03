@@ -1,0 +1,21 @@
+.mapContainer {
+  width: 100%;
+  height: calc(100vh - 150px);
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+}
+
+/* responsiveness */
+@media (max-width: 768px) {
+  .mapContainer {
+    height: calc(100vh - 200px);
+  }
+}
