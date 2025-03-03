@@ -26,7 +26,7 @@ function App() {
 
   // handle search by city
   const handleCitySearch = async cityName => {
-    if (!cityName) return;
+    if (!cityName.trim()) return;
 
     try {
       setLoading(true);
