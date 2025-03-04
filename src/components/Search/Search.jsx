@@ -12,7 +12,7 @@ const Search = ({ onSearch }) => {
   return (
     <div>
       <div className={styles.search}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.searchForm}>
           <input
             type="search"
             id="search-location"
@@ -21,6 +21,9 @@ const Search = ({ onSearch }) => {
             value={searchValue}
             onChange={e => setSearchValue(e.target.value)}
           />
+          <button type="submit" className={styles.searchButton}>
+            Search
+          </button>
         </form>
       </div>
     </div>
