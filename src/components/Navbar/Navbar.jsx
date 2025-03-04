@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import Search from "../Search/Search";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 const Navbar = ({ onSearch }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,15 +17,18 @@ const Navbar = ({ onSearch }) => {
           Global Weather
         </a>
 
-        <button
-          className={styles.menuToggle}
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          <span
-            className={`${styles.hamburger} ${menuOpen ? styles.active : ""}`}
-          ></span>
-        </button>
+        <div className={styles.navControls}>
+          <ThemeToggle />
+          <button
+            className={styles.menuToggle}
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            <span
+              className={`${styles.hamburger} ${menuOpen ? styles.active : ""}`}
+            ></span>
+          </button>
+        </div>
       </div>
 
       <div

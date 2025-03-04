@@ -1,12 +1,13 @@
 .navbar {
   padding: 0 20px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: var(--navbar-bg);
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px var(--shadow-color),
+    0 2px 4px -1px var(--shadow-color);
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .navbarTop {
@@ -17,14 +18,20 @@
   padding: 20px 0;
 }
 
+.navControls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .navbar .logo {
   font-size: 1.6rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #007bff, #00d2ff);
+  background: var(--highlight-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #007bff;
+  color: var(--highlight-color);
   letter-spacing: -0.5px;
   text-decoration: none;
   display: inline-block;
@@ -41,7 +48,7 @@
 
 .navLink {
   text-decoration: none;
-  color: #2d3748;
+  color: var(--text-color);
   font-weight: 500;
   position: relative;
   padding: 0.5rem 0;
@@ -55,12 +62,12 @@
   height: 2px;
   bottom: 0;
   left: 0;
-  background: linear-gradient(135deg, #007bff, #00d2ff);
+  background: var(--highlight-gradient);
   transition: width 0.3s ease-in-out;
 }
 
 .navLink:hover {
-  color: #007bff;
+  color: var(--highlight-color);
 }
 
 .navLink:hover:after {
@@ -70,7 +77,7 @@
 .navSearch input {
   padding: 8px 12px;
   border-radius: 4px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   font-size: 0.9rem;
   width: 100%;
 }
@@ -92,7 +99,7 @@
   transform: translateY(-50%);
   width: 30px;
   height: 3px;
-  background-color: #007bff;
+  background-color: var(--highlight-color);
   transition: all 0.3s ease;
 }
 
@@ -102,7 +109,7 @@
   position: absolute;
   width: 30px;
   height: 3px;
-  background-color: #007bff;
+  background-color: var(--highlight-color);
   transition: all 0.3s ease;
 }
 
