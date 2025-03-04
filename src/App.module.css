@@ -9,8 +9,8 @@
 
 .container {
   padding: 0 min(5vw, 80px);
+  transition: background-color 0.3s ease;
 }
-
 .searchContainer {
   display: none;
 }
