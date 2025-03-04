@@ -1,9 +1,5 @@
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  padding: 20px;
+  padding: 0 20px;
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -11,6 +7,14 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+.navbarTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
 }
 
 .navbar .logo {
@@ -32,6 +36,7 @@
   display: flex;
   gap: 2.5rem;
   align-items: center;
+  margin-right: 30px;
 }
 
 .navLink {
@@ -63,26 +68,108 @@
 }
 
 .navSearch input {
-  padding: 5px 10px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.menuToggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 24px;
+  position: relative;
+}
+
+.hamburger {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 3px;
+  background-color: #007bff;
+  transition: all 0.3s ease;
+}
+
+.hamburger:before,
+.hamburger:after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background-color: #007bff;
+  transition: all 0.3s ease;
+}
+
+.hamburger:before {
+  transform: translateY(-10px);
+}
+
+.hamburger:after {
+  transform: translateY(10px);
+}
+
+.hamburger.active {
+  background-color: transparent;
+}
+
+.hamburger.active:before {
+  transform: rotate(45deg);
+}
+
+.hamburger.active:after {
+  transform: rotate(-45deg);
 }
 
 /* responsiveness */
-@media (max-width: 768px) {
+@media (min-width: 769px) {
   .navbar {
-    flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .navbarCollapse {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    margin-left: 2rem;
+  }
+
+  .navSearch {
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .menuToggle {
+    display: block;
+  }
+
+  .navbarCollapse {
+    display: none;
+    width: 100%;
+    padding: 0 0 20px;
+  }
+
+  .navbarCollapse.show {
+    display: block;
   }
 
   .navLinks {
     flex-direction: column;
-    gap: 1.2rem;
-    width: 100%;
-    text-align: center;
-    padding: 1rem 0;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
   }
 
-  .navLink:after {
-    bottom: -4px;
+  .navSearch {
+    width: 100%;
   }
 }

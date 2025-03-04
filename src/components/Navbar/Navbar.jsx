@@ -3,21 +3,38 @@ import styles from "./Navbar.module.css";
 
 const Navbar = ({ onSearch }) => {
   const [searchValue, setSearchValue] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
     onSearch(searchValue);
   };
 
-  return (
-    <>
-      <nav className={styles.navbar}>
-        <div className={styles.navbarBrand}>
-          <a href="/" className={styles.logo}>
-            Global Weather
-          </a>
-        </div>
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
+  return (
+    <nav className={styles.navbar}>
+      <div className={styles.navbarTop}>
+        <a href="/" className={styles.logo}>
+          Global Weather
+        </a>
+
+        <button
+          className={styles.menuToggle}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          <span
+            className={`${styles.hamburger} ${menuOpen ? styles.active : ""}`}
+          ></span>
+        </button>
+      </div>
+
+      <div
+        className={`${styles.navbarCollapse} ${menuOpen ? styles.show : ""}`}
+      >
         <ul className={styles.navLinks}>
           <li className={styles.navItem}>
             <a href="/" className={styles.navLink}>
@@ -47,8 +64,8 @@ const Navbar = ({ onSearch }) => {
             />
           </form>
         </div>
-      </nav>
-    </>
+      </div>
+    </nav>
   );
 };
 
