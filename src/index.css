@@ -1,0 +1,47 @@
+:root {
+  /* light mode (default) */
+  --bg-color: #ffffff;
+  --text-color: #2d3748;
+  --card-bg: #ffffff;
+  --border-color: #ddd;
+  --hover-color: rgba(0, 123, 255, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --highlight-color: #007bff;
+  --highlight-gradient: linear-gradient(135deg, #007bff, #00d2ff);
+  --navbar-bg: rgba(255, 255, 255, 0.95);
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --input-bg: #ffffff;
+}
+
+.dark-mode {
+  --bg-color: #1a202c;
+  --text-color: #e2e8f0;
+  --card-bg: #2d3748;
+  --border-color: #4a5568;
+  --hover-color: rgba(66, 153, 225, 0.2);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --highlight-color: #63b3ed;
+  --highlight-gradient: linear-gradient(135deg, #3182ce, #00d2ff);
+  --navbar-bg: rgba(26, 32, 44, 0.95);
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --input-bg: #2d3748;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+input {
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+input::placeholder {
+  color: var(--text-color);
+  opacity: 0.7;
+}
