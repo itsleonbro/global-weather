@@ -18,7 +18,7 @@
 }
 
 .navbar .logo {
-  font-size: 1.75rem;
+  font-size: 1.6rem;
   font-weight: 700;
   background: linear-gradient(135deg, #007bff, #00d2ff);
   -webkit-background-clip: text;
@@ -148,6 +148,10 @@
 }
 
 @media (max-width: 768px) {
+  .navbar .logo {
+    font-size: 1.3rem;
+  }
+
   .menuToggle {
     display: block;
   }
