@@ -1,11 +1,12 @@
 .weatherCard {
-  background-color: white;
+  background-color: var(--card-bg);
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   width: 100%;
   max-width: 350px;
   height: fit-content;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .weatherMain {
@@ -40,7 +41,7 @@
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .detailItem:last-child {
@@ -65,7 +66,6 @@
     padding: 20px;
     display: flex;
     justify-content: space-between;
-
     flex-wrap: wrap;
     align-items: center;
   }

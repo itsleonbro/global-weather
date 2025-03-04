@@ -4,13 +4,35 @@
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
   margin-top: 20px;
+  transition: box-shadow 0.3s ease;
 }
 
 .map {
   height: 100%;
   width: 100%;
+}
+
+/* dark mode styles fr map tiles */
+:global(.dark-mode) :global(.leaflet-tile) {
+  filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3)
+    brightness(0.7);
+}
+
+:global(.dark-mode) :global(.leaflet-container) {
+  background: #303030;
+}
+
+:global(.dark-mode) :global(.leaflet-control-attribution) {
+  background: rgba(0, 0, 0, 0.5);
+  color: #ccc;
+}
+
+:global(.dark-mode) :global(.leaflet-control-zoom-in),
+:global(.dark-mode) :global(.leaflet-control-zoom-out) {
+  background-color: #1a202c;
+  color: #e2e8f0;
 }
 
 /* responsiveness */
