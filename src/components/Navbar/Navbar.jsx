@@ -52,7 +52,9 @@ const Navbar = ({ onSearch }) => {
           </li>
         </ul>
 
-        <Search onSearch={onSearch} />
+        <div className={styles.navSearch}>
+          <Search onSearch={onSearch} />
+        </div>
       </div>
     </nav>
   );

@@ -74,11 +74,15 @@
   width: 100%;
 }
 
+.navSearch {
+  min-width: 200px;
+}
+
 .navSearch input {
   padding: 8px 12px;
   border-radius: 4px;
   border: 1px solid var(--border-color);
-  font-size: 0.9rem;
+  font-size: 16px;
   width: 100%;
 }
 
@@ -148,10 +152,6 @@
     flex-grow: 1;
     margin-left: 2rem;
   }
-
-  .navSearch {
-    min-width: 200px;
-  }
 }
 
 @media (max-width: 768px) {
@@ -184,6 +184,6 @@
   }
 
   .navSearch {
-    width: 100%;
+    display: none;
   }
 }
