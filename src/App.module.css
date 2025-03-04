@@ -10,3 +10,16 @@
 .container {
   padding: 0 min(10vw, 80px);
 }
+
+.searchContainer {
+  display: none;
+}
+
+/* responsiveness */
+@media (max-width: 768px) {
+  .searchContainer {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+}

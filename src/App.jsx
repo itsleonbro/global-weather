@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import "./App.css";
+import styles from "./App.module.css";
 import Navbar from "./components/Navbar/Navbar";
 import Map from "./components/Map/Map";
 import Weather from "./components/Weather/Weather";
 import { getWeatherByCoordinates, getWeatherByCity } from "./services/weather";
+import Search from "./components/Search/Search";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
@@ -42,8 +43,13 @@ function App() {
 
   return (
     <>
-      <div className="container">
+      <div className={styles.container}>
         <Navbar onSearch={handleCitySearch} />
+
+        <div className={styles.searchContainer}>
+          <Search onSearch={handleCitySearch} />
+        </div>
+
         <div>
           <Map onLocationSelected={handleLocationSelected} />
           <Weather weatherData={weatherData} loading={loading} error={error} />
