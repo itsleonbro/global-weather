@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import styles from "./Navbar.module.css";
+import Search from "../Search/Search";
 
 const Navbar = ({ onSearch }) => {
-  const [searchValue, setSearchValue] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    onSearch(searchValue);
-  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -53,17 +48,7 @@ const Navbar = ({ onSearch }) => {
           </li>
         </ul>
 
-        <div className={styles.navSearch}>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="search"
-              placeholder="Search location..."
-              className={styles.searchInput}
-              value={searchValue}
-              onChange={e => setSearchValue(e.target.value)}
-            />
-          </form>
-        </div>
+        <Search onSearch={onSearch} />
       </div>
     </nav>
   );
