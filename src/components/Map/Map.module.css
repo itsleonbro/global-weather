@@ -16,6 +16,6 @@
 /* responsiveness */
 @media (max-width: 768px) {
   .mapContainer {
-    height: calc(100vh - 200px);
+    height: calc(100dvh - 400px);
   }
 }

@@ -51,8 +51,8 @@
 @media (min-width: 768px) {
   .weatherCard {
     position: absolute;
-    right: 20px;
-    top: 20px;
+    right: 40px;
+    top: 100px;
     z-index: 1000;
   }
 }
