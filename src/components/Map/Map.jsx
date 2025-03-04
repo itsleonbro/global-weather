@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MapContainer,
   TileLayer,
   useMapEvents,
   Marker,
   Popup,
+  useMap,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import styles from "./Map.module.css";
@@ -23,10 +24,21 @@ const defaultIcon = L.icon({
 //  default icon for all markers
 L.Marker.prototype.options.icon = defaultIcon;
 
-// handle map click events
-const LocationMarker = ({ onLocationSelected }) => {
-  const [position, setPosition] = useState(null);
+// component to update map view when center changes
+const ChangeMapView = ({ center }) => {
+  const map = useMap();
 
+  useEffect(() => {
+    if (center) {
+      map.setView(center, 10);
+    }
+  }, [center, map]);
+
+  return null;
+};
+
+// handle map click events
+const LocationMarker = ({ onLocationSelected, position, setPosition }) => {
   const map = useMapEvents({
     click(e) {
       const { lat, lng } = e.latlng;
@@ -37,15 +49,23 @@ const LocationMarker = ({ onLocationSelected }) => {
 
   return position === null ? null : (
     <Marker position={position}>
-      <Popup>You clicked here</Popup>
+      <Popup>Selected location</Popup>
     </Marker>
   );
 };
 
-const Map = ({ onLocationSelected }) => {
-  // defaut is jhb
+const Map = ({ onLocationSelected, center }) => {
+  // default is jhb
   const defaultCenter = [-26.2, 28.04];
   const defaultZoom = 6;
+  const [position, setPosition] = useState(null);
+
+  // update position marker when center changes from outside
+  useEffect(() => {
+    if (center && center.length === 2) {
+      setPosition({ lat: center[0], lng: center[1] });
+    }
+  }, [center]);
 
   return (
     <div className={styles.mapContainer}>
@@ -59,7 +79,12 @@ const Map = ({ onLocationSelected }) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <LocationMarker onLocationSelected={onLocationSelected} />
+        <LocationMarker
+          onLocationSelected={onLocationSelected}
+          position={position}
+          setPosition={setPosition}
+        />
+        {center && <ChangeMapView center={center} />}
       </MapContainer>
     </div>
   );

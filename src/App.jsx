@@ -10,6 +10,7 @@ function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [mapCenter, setMapCenter] = useState(null);
 
   // handle location selection from map
   const handleLocationSelected = async (lat, lng) => {
@@ -18,6 +19,9 @@ function App() {
       setError(null);
       const data = await getWeatherByCoordinates(lat, lng);
       setWeatherData(data);
+
+      // update map center when location is selected
+      setMapCenter([lat, lng]);
     } catch (err) {
       setError("failed to fetch weather data. please try again.");
     } finally {
@@ -34,6 +38,11 @@ function App() {
       setError(null);
       const data = await getWeatherByCity(cityName);
       setWeatherData(data);
+
+      // update map center with city coordinates
+      if (data && data.coord) {
+        setMapCenter([data.coord.lat, data.coord.lon]);
+      }
     } catch (err) {
       setError("City not found or error fetching data.");
     } finally {
@@ -51,7 +60,7 @@ function App() {
         </div>
 
         <div>
-          <Map onLocationSelected={handleLocationSelected} />
+          <Map onLocationSelected={handleLocationSelected} center={mapCenter} />
           <Weather weatherData={weatherData} loading={loading} error={error} />
         </div>
       </div>
