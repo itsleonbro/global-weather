@@ -5,6 +5,7 @@ import Map from "./components/Map/Map";
 import Weather from "./components/Weather/Weather";
 import { getWeatherByCoordinates, getWeatherByCity } from "./services/weather";
 import Search from "./components/Search/Search";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
@@ -51,7 +52,7 @@ function App() {
   };
 
   return (
-    <>
+    <ThemeProvider>
       <div className={styles.container}>
         <Navbar onSearch={handleCitySearch} />
 
@@ -64,7 +65,7 @@ function App() {
           <Weather weatherData={weatherData} loading={loading} error={error} />
         </div>
       </div>
-    </>
+    </ThemeProvider>
   );
 }
 
